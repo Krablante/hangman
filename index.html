@@ -31,12 +31,9 @@
     }
     var remainingLetters = word.length;
 
-    var lives = 3;
+    var lives = 5;
     var correctCounter = 0;
-    while (remainingLetters > 0) {
-      if (lives === 0) {
-        break;
-      }
+    while (remainingLetters > 0 && lives > 0) {
       //Show the player their progress
       //Take input from the player
       //Update answerArray and remainingLetters
@@ -55,7 +52,10 @@
         //update the game state with the guess
         for (var j = 0; j < word.length; j++) {
 
-          if (word[j] === guess) {
+          if (word[j] === guess && answerArray[j] === guess) {
+            alert("You have already entered this letter.");
+            correctCounter++;
+          } else if (word[j] === guess) {
             answerArray[j] = guess;
             remainingLetters--;
             correctCounter++;
@@ -67,11 +67,13 @@
         }
       }
     }
+
+
     if (remainingLetters === 0) {
       alert(answerArray.join(" "));
       alert("Good job! The answer was " + word);
     } else {
-      alert("Ah... You were so close!");
+      alert("You were so close! The answer was: " + word);
     }
   </script>
 </body>
