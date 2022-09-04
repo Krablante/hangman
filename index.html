@@ -12,7 +12,7 @@
   <!-- <h1>Hello World!.. Again...</h1>
   <p>It`s not my first web page but... "My first web page".</p> -->
   <script>
-    var words = [
+    let words = [
       "javascript",
       "monkey",
       "fish",
@@ -25,32 +25,32 @@
       "ship",
       "london"
     ];
-    var lives = 5;
-    var correctCounter = 0;
+    let lives = 5;
+    let correctCounter = 0;
 
 
-    var pickWord = function (rWord) {
+    let pickWord = function (rWord) {
       return rWord[Math.floor(Math.random() * rWord.length)];
     }
 
-    var setupAnswerArray = function (word) {
-      var aArray = [];
-      for (var i = 0; i < word.length; i++) {
+    let setupAnswerArray = function (word) {
+      let aArray = [];
+      for (let i = 0; i < word.length; i++) {
         aArray[i] = "_";
       }
       return aArray;
     }
 
-    var showPlayerProgress = function (answerArray) {
+    let showPlayerProgress = function (answerArray) {
       alert(answerArray.join(" "));
     }
 
-    var getGuess = function () {
+    let getGuess = function () {
       return prompt("Guess a letter, or click \"Cancel\" to stop playing").toLowerCase();
     }
 
-    var updateGameState = function (guess, word, answerArray) {
-      for (var j = 0; j < word.length; j++) {
+    let updateGameState = function (guess, word, answerArray) {
+      for (let j = 0; j < word.length; j++) {
 
         if (word[j] === guess && answerArray[j] === guess) {
           alert("You have already entered this letter.");
@@ -63,22 +63,22 @@
       }
       if (correctCounter === 0) {
         lives--;
-        alert(lives + " lives left");
+        alert(`${lives} lives left`);
       }
     }
 
-    var showAnswerAndEndTheGame = function (answerArray) {
+    let showAnswerAndEndTheGame = function (answerArray) {
       if (remainingLetters === 0) {
         alert(answerArray.join(" "));
-        alert("Good job! The answer was " + word);
+        alert(`Good job! The answer was ${word}`);
       } else {
-        alert("You were so close! The answer was: " + word);
+        alert(`You were so close! The answer was: ${word}`);
       }
     }
 
-    var word = pickWord(words);
-    var answerArray = setupAnswerArray(word);
-    var remainingLetters = word.length;
+    let word = pickWord(words);
+    let answerArray = setupAnswerArray(word);
+    let remainingLetters = word.length;
 
 
     while (remainingLetters > 0 && lives > 0) {
@@ -89,7 +89,7 @@
       correctCounter = 0;
       showPlayerProgress(answerArray);
 
-      var guess = getGuess()
+      let guess = getGuess()
       if (guess === null) {
         break;
       } else if (guess.length !== 1) {
