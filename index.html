@@ -28,12 +28,9 @@
     let lives = 5;
     let correctCounter = 0;
 
+    let pickWord = (rWord) => rWord[Math.floor(Math.random() * rWord.length)];
 
-    let pickWord = function (rWord) {
-      return rWord[Math.floor(Math.random() * rWord.length)];
-    }
-
-    let setupAnswerArray = function (word) {
+    let setupAnswerArray = (word) => {
       let aArray = [];
       for (let i = 0; i < word.length; i++) {
         aArray[i] = "_";
@@ -41,15 +38,11 @@
       return aArray;
     }
 
-    let showPlayerProgress = function (answerArray) {
-      alert(answerArray.join(" "));
-    }
+    let showPlayerProgress = (answerArray) => alert(answerArray.join(" "));
 
-    let getGuess = function () {
-      return prompt("Guess a letter, or click \"Cancel\" to stop playing").toLowerCase();
-    }
+    let getGuess = () => prompt("Guess a letter, or click \"Cancel\" to stop playing").toLowerCase();
 
-    let updateGameState = function (guess, word, answerArray) {
+    let updateGameState = (guess, word, answerArray) => {
       for (let j = 0; j < word.length; j++) {
 
         if (word[j] === guess && answerArray[j] === guess) {
@@ -67,7 +60,7 @@
       }
     }
 
-    let showAnswerAndEndTheGame = function (answerArray) {
+    let showAnswerAndEndTheGame = (answerArray) => {
       if (remainingLetters === 0) {
         alert(answerArray.join(" "));
         alert(`Good job! The answer was ${word}`);
@@ -75,12 +68,12 @@
         alert(`You were so close! The answer was: ${word}`);
       }
     }
-
     let word = pickWord(words);
     let answerArray = setupAnswerArray(word);
     let remainingLetters = word.length;
 
 
+    // MAIN CONTENT
     while (remainingLetters > 0 && lives > 0) {
       //Show the player their progress
       //Take input from the player
